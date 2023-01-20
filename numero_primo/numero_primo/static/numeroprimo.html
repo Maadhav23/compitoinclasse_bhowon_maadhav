@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head> 
+  <title>Esercizio 4</title>
+  <meta charset="UTF-8">
+   <meta name="keywords" content="HTML, CSS, JavaScript">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<form name="frm" id="frm" >
+<h2>controllo numero primo</h2>
+<p>
+<label for="campo_n">numero </label>
+<input type="text" id="campo_n" size="10" value = "2" />
+</p>
+<p>
+<input type="button" value=" controlla " 
+  onclick = "nPrimo(campo_n.value)" />
+</p>
+</form>
+
+<script>
+      function nPrimo(numero)
+        {
+          if (isNaN(numero))
+            {
+              alert(numero+" non è un numero.");
+              return;
+            }
+
+          if (parseInt(numero) != numero)
+            {
+              alert(numero+" non è un numero intero.");
+              return;
+            }
+          if (numero<2)
+            {
+              alert("Solo numeri maggiori di 1.");
+              return;
+            }
+
+          var divisore = 1;
+
+
+          if (numero>2)
+            {
+              if ((numero & 1)==0)
+
+                divisore = 2;
+              else
+
+                if (numero >= 9)
+                  for (i=3; i<= Math.sqrt(numero); i+=2)
+                    if ((numero % i)==0)
+                      {
+
+                        divisore = i;
+                        break;
+                      }
+            }
+
+      if (divisore==1)
+        alert(numero+" è primo.")
+      else
+        alert(numero+" non è primo.")      
+    }
+  </script>
+
+
+
+</body>
+</html>

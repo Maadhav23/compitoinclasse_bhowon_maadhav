@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+   <meta name="keywords" content="HTML, CSS, JavaScript">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esercizio 3</title>
+</head>
+
+<body>
+<h2>Indovina il numero</h2>
+<form name="frm" id="frm">
+<p>
+<label for="campo_nmax">Numero massimo 
+<input type="text" id="campo_nmax" size="10" value = "0" />
+</p>
+<p><input type="button" value=" genera un numero casuale  " onclick = "nCasuale()" /></p>
+<p><input type="button" value=" inizio gioco  " onclick = "gioco()" /></p>
+<p><input type="reset" value=" reset " /></p>
+</form>
+
+<script>
+      var numero_max;
+      var x;
+      var prova;
+      var puo_iniziare = false;
+      var indovinato = false;
+
+      function nCasuale()
+        {
+          puo_iniziare = false;
+          numero_max = document.getElementById("campo_nmax").value;
+          puo_iniziare = true;
+          numero_max++;
+          x = Math.floor(Math.random()*numero_max);
+        }
+
+      function gioco()
+        {
+          if (!puo_iniziare)
+            {
+              alert("Generare un numero casuale.");
+              return;
+            }
+          indovinato = false;
+          prova = 0;
+          while (!indovinato)
+            {
+              prova = prompt("indovina il numero",prova);
+              prova = parseInt(prova);
+              if (prova == x)
+                {
+                  puo_iniziare = false;
+                  indovinato = true;
+                  alert("Complimenti, hai vinto!");
+                }
+              else
+                {
+                  if (prova < x)
+                    alert("Numero troppo basso "+prova);
+                  else
+                    alert("Numero troppo alto "+prova);
+                }
+            }
+        }
+
+  </script>
+</body>
+</html>
